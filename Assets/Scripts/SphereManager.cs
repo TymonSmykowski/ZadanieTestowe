@@ -6,24 +6,20 @@ using UnityEngine;
 public class SphereManager : MonoBehaviour
 {
 
-    [SerializeField] bool _isMoving = true;
-    
-    private Renderer _rend;
-    private Rigidbody _rb;
-
     public float radius = 10.0f;
     public float speed = 3.0f;
     public float maxSpeed = 3.0f;
     public float acceleration = 0.2f;
 
-    private float _currentAngle;
-
+    [SerializeField] bool _isMoving = true;
     [SerializeField] GameObject fireworks;
-
-    private float _dist = 0.0f;
-
     [SerializeField] TMP_Text _uiTextDist;
     [SerializeField] TMP_Text _uiTextSpeed;
+
+    private Renderer _rend;
+    private Rigidbody _rb;
+    private float _currentAngle;
+    private float _dist = 0.0f;
 
     void Start()
     {
