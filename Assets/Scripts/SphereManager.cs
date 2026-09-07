@@ -55,7 +55,7 @@ public class SphereManager : MonoBehaviour
             _dist += Vector3.Distance(startPos, newPos);
         }
 
-        if (transform.position.y < 0)
+        if (transform.position.y < 3.7f)
         {
             DestroySphere();
         }
