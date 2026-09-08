@@ -10,16 +10,15 @@ public class SphereManager : MonoBehaviour
     public float speed = 3.0f;
     public float maxSpeed = 3.0f;
     public float acceleration = 0.2f;
+    public GameObject fireworks;
 
-    [SerializeField] bool _isMoving = true;
-    [SerializeField] GameObject fireworks;
-    [SerializeField] TMP_Text _uiTextDist;
-    [SerializeField] TMP_Text _uiTextSpeed;
-
+    [SerializeField] private TMP_Text _uiTextDist;
+    [SerializeField] private TMP_Text _uiTextSpeed;
     private Renderer _rend;
     private Rigidbody _rb;
     private float _currentAngle;
     private float _dist = 0.0f;
+    private bool _isMoving = true;
 
     void Start()
     {
@@ -37,7 +36,9 @@ public class SphereManager : MonoBehaviour
     {
         if (_isMoving)
         {
-            _rend.material.color = new Color(transform.position.y / 20.0f, 0.0f, 0.0f);
+            _rend.material.color = new Color(transform.position.y / 20.0f,
+                                            (Mathf.Abs(transform.position.x) + 0.01f) / 5.0f, 
+                                            (Mathf.Abs(transform.position.z) + 0.01f) / 5.0f);
 
             if (speed < maxSpeed)
             {
@@ -55,7 +56,7 @@ public class SphereManager : MonoBehaviour
             _dist += Vector3.Distance(startPos, newPos);
         }
 
-        if (transform.position.y < 3.7f)
+        if (transform.position.y < 6.30f)
         {
             DestroySphere();
         }
