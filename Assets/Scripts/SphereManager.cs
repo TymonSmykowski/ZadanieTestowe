@@ -6,14 +6,14 @@ using UnityEngine;
 public class SphereManager : MonoBehaviour
 {
 
-    public float radius = 10.0f;
-    public float speed = 3.0f;
-    public float maxSpeed = 3.0f;
-    public float acceleration = 0.2f;
-    public GameObject fireworks;
-
+    [SerializeField] private float _radius = 10.0f;
+    [SerializeField] private float _speed = 3.0f;
+    [SerializeField] private float _maxSpeed = 3.0f;
+    [SerializeField] private float _acceleration = 0.2f;
+    [SerializeField] private GameObject _fireworks;
     [SerializeField] private TMP_Text _uiTextDist;
     [SerializeField] private TMP_Text _uiTextSpeed;
+
     private Renderer _rend;
     private Rigidbody _rb;
     private float _currentAngle;
@@ -37,18 +37,18 @@ public class SphereManager : MonoBehaviour
         if (_isMoving)
         {
             _rend.material.color = new Color(transform.position.y / 20.0f,
-                                            (Mathf.Abs(transform.position.x) + 0.01f) / 5.0f, 
-                                            (Mathf.Abs(transform.position.z) + 0.01f) / 5.0f);
+                                            Mathf.Abs(transform.position.x) / 5.0f, 
+                                            Mathf.Abs(transform.position.z) / 5.0f);
 
-            if (speed < maxSpeed)
+            if (_speed < _maxSpeed)
             {
-                speed += acceleration;
+                _speed += _acceleration;
             }
 
-            _currentAngle += speed * Time.deltaTime;
+            _currentAngle += _speed * Time.deltaTime;
 
-            float newX = Mathf.Cos(_currentAngle) * radius;
-            float newZ = Mathf.Sin(_currentAngle) * radius;
+            float newX = Mathf.Cos(_currentAngle) * _radius;
+            float newZ = Mathf.Sin(_currentAngle) * _radius;
 
             Vector3 startPos = transform.position;
             transform.position = new Vector3(newX, transform.position.y, newZ);
@@ -61,7 +61,7 @@ public class SphereManager : MonoBehaviour
             DestroySphere();
         }
 
-        _uiTextSpeed.text = "Speed: " + (Mathf.Round(speed * 100) * 0.01f).ToString();
+        _uiTextSpeed.text = "Speed: " + (Mathf.Round(_speed * 100) * 0.01f).ToString();
     }
 
     public void StartSphere()
@@ -77,7 +77,7 @@ public class SphereManager : MonoBehaviour
 
     IEnumerator StopSphere()
     {
-        speed = 0;
+        _speed = 0;
         _uiTextDist.text = _dist.ToString();
         _rb.isKinematic = true;
         _isMoving = false;
@@ -89,7 +89,7 @@ public class SphereManager : MonoBehaviour
 
     private void DestroySphere()
     {
-        Instantiate(fireworks,transform.position, Quaternion.identity);
+        Instantiate(_fireworks,transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
