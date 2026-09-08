@@ -446,12 +446,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ab62503d79d744c9fb024a670a3d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isMoving: 1
-  radius: 5
-  speed: 0
-  maxSpeed: 5
-  acceleration: 0.01
-  fireworks: {fileID: 6098414053477364690, guid: b171725b084b7164b97907773d8d483d, type: 3}
+  _radius: 5
+  _speed: 0
+  _maxSpeed: 5
+  _acceleration: 0.01
+  _fireworks: {fileID: 6098414053477364690, guid: b171725b084b7164b97907773d8d483d, type: 3}
   _uiTextDist: {fileID: 814430814}
   _uiTextSpeed: {fileID: 1512879343}
 --- !u!54 &587636053
@@ -899,7 +898,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: 13, y: 31, z: -13}
+  m_LocalPosition: {x: 13, y: 35, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
